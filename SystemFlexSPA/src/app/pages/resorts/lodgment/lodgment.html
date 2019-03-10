@@ -1,0 +1,133 @@
+﻿<div ba-panel id="lodgment" ba-panel-class="user-page">
+    <div>
+        <center>
+            <spinner class="loader-page" name="booksSpinner" img-src="/assets/img/spinner/spinner.gif" show="loading"></spinner>
+        </center>
+    </div>
+    <form name="setLogdmentForm" autocomplete="off" novalidate>
+        <div class="">
+            <center>
+                <h3 class="al-title ng-binding">Fechas de estancia</h3>
+                &nbsp;&nbsp;
+                <div class="col-md-3" ng-class="{'has-error': setLogdmentForm.dtFrom.$invalid && (setLogdmentForm.dtFrom.$dirty || setLogdmentForm.$submitted)}">
+                    <p class="input-group">
+                        <input type="text" name="dtFrom" placeholder="Desde..." class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dtFrom" is-open="vm.popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" readonly required/>
+                        <span class="input-group-btn">
+                            <button type="button" id="customizablebtn" class="btn" ng-click="vm.dtPickeropen1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                    <span class="help-block error-block basic-block dtFromSpan">El campo "Fecha desde..." es requerido</span>
+                 </div>
+                &nbsp;&nbsp;
+                <div class="col-md-3" ng-class="{'has-error': setLogdmentForm.dtTo.$invalid && (setLogdmentForm.dtTo.$dirty || setLogdmentForm.$submitted)}">
+                    <p class="input-group">
+                        <input type="text" name="dtTo" placeholder="Hasta..." class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dtTo" is-open="vm.popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" id="customizablebtn" class="btn" ng-click="vm.dtPickeropen2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                    <span class="help-block error-block basic-block dtToSpan">El campo "Fecha hasta..." es requerido</span>
+                </div>
+                &nbsp;&nbsp;
+            </center>
+            <table class="table" st-table="smartTableData">
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <center>
+                <h3 class="al-title ng-binding">Personas / habitaciones</h3>
+                <label>
+                    <select class="form-control selectpicker " selectpicker title="optionsCatalog"
+                            ng-model="vm.standardSelected"
+                            ng-options="item as item.label for item in vm.standardSelectItems"></select>
+                </label>
+                &nbsp;&nbsp;
+                <button type="button" name="save" style="float:none" class="btn resetPrice btn-primary" ng-click="vm.selectionComboBox()">Aplicar</button>
+            </center>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th>Personas</th>
+                        <th>Habitaciones</th>
+                    </tr>
+                    <tr ng-repeat="persons in vm.dataSelected">
+                        <td></td>
+                        <td>{{persons.adultsQuantity}}</td>
+                        <td>{{persons.roomQuantity}}</td>
+                    </tr>
+                    <center>
+                        <span class="warningPersonslst" ng-if="vm.dataSelected.length === 0">(No hay elemento seleccionado!)</span>
+                    </center>
+                </table>
+            </div>
+            <br /><br />
+            <!--<div style="float:left; width: 82%; padding: 5px 5px;">
+                <button title="Reset Pricing" ng-click="" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Agregar otra habitacion {{placement.selected}}"
+                        class="btn md-icon-button btn-mini resetPrice btn-primary" data-placement='bottom'>
+                    <i class="ion-plus-circled"></i>
+                </button>
+            </div>-->
+
+            <br /><br /><br />
+            <br />
+            <!-- /////////////////////////////////////// -->
+            <!--///////////////////////////////////////// -->
+            <!--<div class="horizontal-scroll">
+                <table class="table">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th>Habitacion#</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cantidad adultos</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td ng-class="nowrap">1</td>
+                            <td>
+                                <div style="padding: 5px 50px;" class="form-group">
+                                    <input type="number" name="adult" min="1" max="5" required>
+                                </div>
+                            </td>
+                            <td>
+                                <button title="Edit" ng-click="vm.AddRolesDialog(roles)" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="cantidad niños  {{placement.selected}}"
+                                        class="btn md-icon-button btn-mini radiusbtn" data-placement='bottom'>
+                                    <i class="ion-happy-outline"></i>
+                                </button>
+                                <button title="Delete" ng-click="" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Quitar {{placement.selected}}"
+                                        class="btn md-icon-button btn-mini radiusbtn" data-placement='bottom'>
+                                    <i class="ion-trash-b"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td ng-class="nowrap">2</td>
+                            <td>
+                                <div style="padding: 5px 50px;" class="form-group">
+                                    <input type="number" name="adult" min="1" max="5" required>
+                                </div>
+                            </td>
+                            <td>
+                                <button title="Edit" ng-click="vm.AddRolesDialog(roles)" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="cantidad niños  {{placement.selected}}"
+                                        class="btn md-icon-button btn-mini radiusbtn" data-placement='bottom'>
+                                    <i class="ion-happy-outline"></i>
+                                </button>
+                                <button title="Delete" ng-click="" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Quitar {{placement.selected}}"
+                                        class="btn md-icon-button btn-mini radiusbtn" data-placement='bottom'>
+                                    <i class="ion-trash-b"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>-->
+        </div>
+        <button type="button" name="save" style="float:none; padding: 5px 5px;" class="btn resetPrice btn-primary" ng-disabled="setLogdmentForm.$invalid || vm.dataSelected.length === 0" ng-click="vm.goToRecordStay()">Confirmar esta seleccion</button>
+    </form>
+</div>

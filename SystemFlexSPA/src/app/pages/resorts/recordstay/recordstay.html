@@ -1,0 +1,58 @@
+﻿<div class="auth-block" ba-panel id="load" ba-panel-class="user-page">
+    <div>
+        <center>
+            <spinner class="loader-page" name="booksSpinner" img-src="/assets/img/spinner/spinner.gif" show="loading"></spinner>
+        </center>
+    </div>
+    <div class="horizontal-scroll">
+        <div style="float:left; padding: 5px 5px;" class="form-group select-page-size-wrap">
+        </div>
+        <div class="searchbarWithoutPopup">
+            <input type="text" class="form-control form-control-rounded" id="input03" placeholder="Buscar">
+        </div>
+        <table class="table" st-table="smartTableData">
+            <thead>
+                <tr class="sortable ">
+
+                    <th st-sort="dateCreation">Fecha de creacion</th>
+                    <th st-sort="nigthOfStay">Noches de estancia</th>
+                    <th st-sort="roomsNumber">Numero de habitaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="recordstay in vm.recordstayList">
+                    <td>{{recordstay.dateCreation | date : 'dd/MM/yyyy'}}</td>
+                    <td>{{recordstay.days}}</td>
+                    <td>{{(recordstay.roomQuantity == 0) ? recordstay.roomQuantityCatalog : recordstay.roomQuantity }}</td>
+                    <td>
+                        <div class="col-sm-4 col-xs-6">
+                            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                <button type="button" class="btn btn-primary " uib-dropdown-toggle>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul uib-dropdown-menu>
+                                    <li><a ng-click="vm.selectRoom(recordstay)" >Seleccionar habitación</a></li>
+                                    <li><a  ng-click="vm.modifyRequest(recordstay)" >Modificar</a></li>
+                                    <li><a  ng-click="vm.deleteRequest(recordstay)" >Eliminar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <label>
+            filas por página
+            <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                    ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]"></select>
+        </label>
+    </div>
+</div>

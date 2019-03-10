@@ -1,0 +1,40 @@
+﻿<div id="add-user" style="margin-top: 155px; padding-bottom:0px; " class="modal-content">
+    <div class="compose-header modal-header bg-success">
+        <!--<i class="ion-checkmark modal-icon"></i>--><span style="font-size:19px;">{{vm.title}}</span>
+        <span class="header-controls">
+            <button type="button" class="btn btn-success btn-icon"
+                    style="background-color: transparent; border-color:transparent; border-radius:35px;" ng-click="$dismiss()">
+                <i class="ion-close-circled"></i>
+            </button>
+        </span>
+    </div>
+    <div class="">
+        <form name="addCreditCardForm" autocomplete="off" novalidate>
+            <div class="modal-body text-left">
+                <div class="form-group" ng-class="{'has-error': addCreditCardForm.numbercard.$invalid && (addCreditCardForm.numbercard.$dirty || addCreditCardForm.$submitted)}">
+                    <label for="input01">Numero de tarjeta</label>
+                    <input type="text" name="numbercard" class="form-control" id="input01" ng-model="vm.numbercard" placeholder="Escriba el numero de tarjeta..." required>
+                    <span class="help-block error-block basic-block" style="color:red; margin-left: 8px;">El "Numero de tarjeta" es requerido</span>
+                </div>
+                <div class="col-md-3" style="width: 48%;" ng-class="{'has-error': addCreditCardForm.expiration.$invalid && (addCreditCardForm.expiration.$dirty || addCreditCardForm.$submitted)}">
+                    <p class="input-group">
+                        <input type="text" name="expiration" placeholder="Fecha de caducidad..." class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.expiration" is-open="vm.popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" readonly required />
+                        <span class="input-group-btn">
+                            <button type="button" id="customizablebtn" class="btn" ng-click="vm.dtPickeropen1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                    <span class="help-block error-block basic-block dtFromSpan">El campo "Fecha caducidad..." es requerido</span>
+                </div>
+                
+                <div class="form-group" ng-class="{'has-error': addCreditCardForm.code.$invalid && (addCreditCardForm.code.$dirty || addCreditCardForm.$submitted)}">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="password" name="code" class="form-control" id="input01" ng-model="vm.code" placeholder="Escriba la clave de la tarjeta..." required>
+                    <span class="help-block error-block basic-block" style="color:red; margin-left: 8px;">El "Clave de tarjeta" es requerido</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="save" style="float:left" class="btn resetPrice btn-primary" ng-disabled="addCreditCardForm.$invalid" ng-click="$dismiss(); vm.savePayment()">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

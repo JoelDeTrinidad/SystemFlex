@@ -1,0 +1,53 @@
+﻿<div id="marketing" class="page-marketing clearfix ng-isolate-scope" scroll-position="scrolled" max-height="50" ng-class="{'scrolled': scrolled}" style="">
+    <div>
+        <img class="logo-marketing" src="/assets/img/logo/Logo.png" />
+        <button type="button" ng-click="vm.session()" class="btn button-marketing  btn-xs">Iniciar Sesión</button>
+    </div>
+    <div>
+        <center>
+            <spinner class="loader-page" name="booksSpinner" img-src="/assets/img/spinner/spinner.gif"></spinner>
+        </center>
+    </div>
+</div>
+<div ng-controller="MarketingController">
+    <div style="height: 318px; margin-bottom: 12px">
+        <div style="margin-left: -114px;" uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+            <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                    <!--<h4>Slide {{slide.id}}</h4>-->
+                    <p>{{slide.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-info" ng-hide="true" ng-click="addSlide()">Add Slide</button>
+
+        </div>
+
+    </div>
+</div>   
+<div class="page-foot"></div> 
+<div class="view-page" id="view">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="img-wrapper">
+                <img  src="/assets/img/cabañas/cabañita.png" alt="" title="" />
+            </div>
+            <p>
+                Las Cabañas Encantadas de Nindirí es un apartotel a orillas de la carretera Managua-Masaya con una vista inigualable a la laguna de Masaya. Cuenta con tres cabañas equipadas con todo lo necesario para pasar temporadas cortas o largas. En la ladera de la laguna dispone además de una habitación privada con terraza y piscina donde puede alejarse de los ruidos de la ciudad o bien organizar eventos familiares o reuniones de trabajo.
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <div class="img-wrapper">
+                <img src="/assets/img/cabañas/cabaña2.jpg" alt="" title="" />
+            </div>
+            <p>
+                Lo que distingue a Las Cabañas Encantadas de Nindirí es su ambiente natural, el cuido y respeto a los árboles y áreas verdes y la privacidad que ofrece. Además, está a a sólo 25.5 kilómetros de la capital y 30 km del Aeropuerto Internacional Augusto C. Sandino. El local cuenta con vigilancia las 24 horas y amplia área de estacionamiento.
+            </p>
+        </div>
+
+    </div>
+</div>

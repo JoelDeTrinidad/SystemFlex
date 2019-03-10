@@ -1,0 +1,71 @@
+﻿.button-save-payment {
+    float: right;
+}
+
+.containerimageroom {
+    opacity: 5;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 2px 2px 2px 0 #C2C2C2;
+    box-shadow: 2px 4px 2px 0 #C2C2C2;
+    width: 317px;
+    height: 221px;
+    margin-top: 9px;
+    margin-left: -55%;
+}
+
+.containerbox1 {
+    border: 1px solid #BBBBBB;
+    position: absolute;
+    height: 224px;
+    margin-left: 49%;
+    margin-top: -22%;
+    width: 419px;
+}
+
+.containerboxExtra {
+    border: 1px solid #BBBBBB;
+    position: absolute;
+    height: 35%;
+    width: 25%;
+    margin-left: 49%;
+    margin-top: -13%;
+    width: 27%;
+}
+
+
+
+.containerdiv1 {
+    border: 1px solid #BBBBBB;
+    position: absolute;
+    margin-top: 9px;
+    height: 56%;
+    width: 94%;
+    margin-left: 3%;
+}
+
+.containerdiv2 {
+    border: 1px solid #BBBBBB;
+    position: absolute;
+    margin-top: 41%;
+    height: 15%;
+    width: 94%;
+    margin-left: 3%;
+}
+
+.btnreceivejustified {
+    margin-top: 137px;
+    height: 31px;
+    width: 86px;
+}
+
+.btninfomationjustified {
+    margin-top: 5%;
+}
+
+#payment {
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        color: #666666;
+    }
+}

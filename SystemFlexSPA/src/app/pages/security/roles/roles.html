@@ -1,0 +1,51 @@
+﻿<div ba-panel id="roles" ba-panel-class="user-page">
+    <div class="horizontal-scroll">  
+            <div style="float:left; padding: 5px 5px;"  class="form-group select-page-size-wrap">
+                <button title="Reset Pricing" ng-click="vm.AddRolesDialog('','','')" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Agregar {{placement.selected}}"
+                        class="btn md-icon-button btn-mini resetPrice btn-primary" data-placement='bottom'>
+                    <i class="ion-plus-circled"></i>
+                </button>
+            </div>
+        <div style="float:left; width: 190px; position:relative;">
+            <input st-search placeholder="Buscar" st-table="vm.rolesList" st-safe-src="vm.roles" class="input-sm form-control form-control-rounded search-input"
+                   type="search" />
+        </div>
+        <table class="table" st-table="vm.rolesList" st-safe-src="vm.roles">
+            <thead>
+                <tr class="sortable ">
+
+                    <th st-sort="role">Perfil</th>
+                    <th st-sort="Description">Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="roles in vm.rolesList">
+                    <td>{{roles.name}}</td>
+                    <td>{{roles.description}}</td>
+                    <td>
+                        <button title="Edit" ng-click="vm.AddRolesDialog(roles)" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Editar {{placement.selected}}"
+                                class="btn md-icon-button btn-mini radiusbtn" data-placement='bottom'>
+                            <i class="ion-edit"></i>
+                        </button>
+                        <button title="Delete" ng-click="vm.DeleteRole(roles)" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Eliminar {{placement.selected}}"
+                                class="btn md-icon-button btn-mini radiusbtn" data-placement='bottom'>
+                            <i class="ion-trash-b"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <div st-pagination="" st-items-by-page="vm.paginations" st-displayed-pages="5"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <label>
+            filas por página
+            <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                    ng-model="vm.paginations" ng-options="i for i in [5,10,15,20,25]"></select>
+        </label>
+    </div>
+</div>

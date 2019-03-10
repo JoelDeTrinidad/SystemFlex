@@ -1,0 +1,223 @@
+﻿<div class="widgets" id="payment">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Comprobante de pago" ba-panel-class="with-scroll">
+                <ba-wizard>
+                    <ba-wizard-step title="Habitacion" form="vm.personalInfoForm">
+                        <center>
+                            <h3 class="al-title ng-binding">Informaci&oacute;n de solicitud</h3>
+                            &nbsp;&nbsp;
+                        </center>
+                        <form name="vm.personalInfoForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.personalInfoForm.roomQuantity.$invalid && (vm.personalInfoForm.roomQuantity.$dirty || vm.personalInfoForm.$submitted)}">
+                                        <label for="roomQuantity">Cantidad de habitaciones</label>
+                                        <input type="text" class="form-control" id="exampleUsername1" name="roomQuantity" placeholder="Cantidad..." ng-model="vm.dataObject.roomQuantityCatalog" readonly required>
+                                        <span class="help-block error-block basic-block">"Cantidad de habitaciones" es requerido</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="days">Noches de estancia</label>
+                                        <input type="number" class="form-control" id="exampleInputEmail1" name="days" placeholder="Noches..." ng-model="vm.dataObject.days" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="initialDate">Desde</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" name="initialDate" placeholder="Fecha desde..." ng-model="vm.dataObject.initialDate" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="endDate">Hasta</label>
+                                        <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="endDate" placeholder="Fecha hasta..." ng-model="vm.dataObject.endDate" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- DIVIDER LINE FORM -->
+                            <table class="table" st-table="smartTableData">
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6" class="text-center">
+                                            <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                            <center>
+                                <h3 class="al-title ng-binding">Seleccione la habitaci&oacute;n</h3>
+                                &nbsp;&nbsp;
+                            </center>
+
+                            <!-- Section table list room -->
+                            <table class="table" st-table="smartTableData">
+                                <tbody>
+                                    <tr ng-repeat="room in vm.roomList" style="height: 239px;">
+                                        <td>
+                                            <img class="containerimageroom" ng-src="{{room.imageHbUrl}}" />
+                                            <div class="containerbox1">
+                                                <div class="containerdiv1">
+                                                    <b>Habitacion con una exclusiva vista al...</b>
+                                                    <center>
+                                                        <button type="button" name="information" class="btn resetPrice btn-primary btninfomationjustified" ng-click="vm.selectionComboBox()">Mas informaci&oacute;n</button>
+                                                    </center>
+                                                </div>
+                                                <div class="containerdiv2"><h5>Precio total: </h5>{{room.price}} US$</div>
+                                                <center>
+                                                    <button type="button" name="receive" class="btn resetPrice btn-primary btnreceivejustified" ng-disabled="(vm.result == undefined ) ? room.disabled : vm.result" ng-click="vm.receive(room)">Reservar</button>
+                                                </center>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- End table list -->
+                        </form>
+                    </ba-wizard-step>
+
+
+                    <!-- Extras section -->
+                    <ba-wizard-step title="Extras" form="vm.productInfoForm">
+                        <center>
+                            <h3 class="al-title ng-binding">Mejore su estancia</h3>
+                            &nbsp;&nbsp;
+                        </center>
+                        <form name="vm.productInfoForm" novalidate>
+                            <div class="row">
+                                <!-- Extra selection service -->
+                                <table class="table" st-table="smartTableData">
+                                    <tbody>
+                                        <tr ng-repeat="room in vm.list" style="height: 239px;">
+                                            <td>
+                                                <img class="containerimageroom" ng-src="{{room.imageUrl}}" />
+                                                <div class="containerboxExtra">
+                                                    <div class="containerdiv1">
+                                                        <center>
+                                                            <button type="button" name="information" class="btn resetPrice btn-primary btninfomationjustified" ng-click="vm.selectionComboBox()">Mas informaci&oacute;n</button>
+                                                        </center>
+                                                    </div>
+                                                    <div class="containerdiv2"></div>
+                                                    <center>
+                                                        <button type="button" name="receive" class="btn resetPrice btn-primary btnreceivejustified" ng-click="vm.selectionComboBox()">Agregar</button>
+                                                    </center>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </ba-wizard-step>
+
+                    <!-- payment section> last tab -->
+                    <ba-wizard-step title="Pago" form="vm.addressForm">
+                        <h3 class="al-title ng-binding">Datos personales</h3>
+                        &nbsp;&nbsp;
+                        <form name="vm.addressForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.addressForm.name.$invalid && (vm.addressForm.name.$dirty || vm.addressForm.$submitted)}">
+                                        <label for="Name">Nombre del cliente</label>
+                                        <input type="text" class="form-control" id="address" name="name" placeholder="Nombre del cliente..." ng-model="vm.users.name" required>
+                                        <span class="help-block error-block basic-block">El campo "Nombre" es requerido </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-group has-feedback"
+                                             ng-class="{'has-error': vm.addressForm.lastName.$invalid && (vm.addressForm.lastName.$dirty || vm.addressForm.$submitted)}">
+                                            <label for="LastName">Apellido</label>
+                                            <input type="text" class="form-control" id="address" name="lastName" placeholder="Apellido..." ng-model="vm.users.lastName" required>
+                                            <span class="help-block error-block basic-block">El campo "Apellido" es requerido </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <label for="phone">Usuario</label>
+                                        <input type="text" class="form-control" id="address" name="user" placeholder="Usuario..." ng-model="vm.users.user" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-group has-feedback"
+                                             ng-class="{'has-error': vm.addressForm.email.$invalid && (vm.addressForm.email.$dirty || vm.addressForm.$submitted)}">
+                                            <label for="email">Correo electronico</label>
+                                            <input type="email" class="form-control" id="address" name="email" placeholder="Correo..." ng-model="vm.dataUserLogged.email" required>
+                                            <span class="help-block error-block basic-block">El campo "Correo electronico" es requerido </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form>
+                            <h3 class="al-title ng-binding">Descuento aplicable</h3>
+                            &nbsp;&nbsp;
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <label for="phone">Tiene un codigo de descuento?</label>
+                                        <input type="text" class="form-control" id="address" name="code" placeholder="Codigo promocional..." ng-model="vm.code">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" name="receive" class="btn resetPrice btn-primary" ng-click="vm.selectionComboBox()">Aplicar descuento</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form>
+                            <h3 class="al-title ng-binding">Metodo de pago</h3>
+                            &nbsp;&nbsp;
+                            <uib-tabset active="$tabSetStatus.activeTab">
+                                <uib-tab heading="Tarjeta de credito">
+                                    <center>
+                                        <h4>Total a pagar en el Hotel: {{vm.total}} US$</h4>
+                                        <p>
+                                            Solo recogemos los datos de la tarjeta para efectuar la reserva
+                                        </p>
+                                        <b>
+                                            Seleccione la tarjeta con la que desea hacer la reserva
+                                        </b>
+                                    </center>
+                                    <p>
+                                        Seleccione el tipo
+                                    </p>
+                                    <div class="checkbox-demo-row">
+                                        <div class="input-demo radio-demo row">
+                                            <div class="col-md-4">
+                                                <label class="radio-inline custom-radio nowrap">
+                                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                    <span>Credito</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox-demo-row">
+                                        <div class="input-demo radio-demo row">
+                                            <div class="col-md-4">
+                                                <label class="radio-inline custom-radio nowrap">
+                                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                    <span>Debito</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <button type="button" name="receive" class="btn resetPrice btn-primary" ng-click="vm.AddPaymentDialog()">Continuar con la reserva</button>
+                                    </center>
+                                </uib-tab>
+                            </uib-tabset>
+                        </form>
+                    </ba-wizard-step>
+                </ba-wizard>
+            </div>
+        </div>
+    </div>
+
+</div>

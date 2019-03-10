@@ -1,0 +1,69 @@
+﻿<div ba-panel id="users" ba-panel-class="user-page">
+    <div class="horizontal-scroll">
+        <div style="float:left; width: 82%; padding: 5px 5px;" class="form-group select-page-size-wrap">
+            <button title="Reset Pricing" ng-click="vm.addOpendialogUsers('','','')" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Agregar {{placement.selected}}"
+                    class="btn md-icon-button btn-mini resetPrice btn-primary" data-placement='bottom'>
+                <i class="ion-plus-circled"></i>
+            </button>
+        </div>
+        <div style="float:left; width: 190px; position:relative;">
+            <input st-search placeholder="Buscar" st-table="vm.userList" st-safe-src="vm.users" class="input-sm form-control form-control-rounded search-input"
+                   type="search" />
+        </div>
+        <table class="table" st-table="vm.userList"  st-safe-src="vm.users">
+            <thead>
+                <tr class="sortable ">
+
+                    <th st-sort="name">Nombre</th>
+                    <th st-sort="user">Usuario</th>
+                    <th st-sort="email">correo</th>
+                    <th st-sort="lastAccess">UltimoAcceso</th>
+                    <th st-sort="active">Activo</th>
+                </tr>
+                <!--<tr>
+                    <th>
+                        
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>-->
+            </thead>
+            <tbody>
+                <tr ng-repeat="users in vm.userList">
+                    <td>{{users.name}} {{users.lastName}}</td>
+                    <td>{{users.user}}</td>
+                    <td>{{users.email}}</td>
+                    <td>{{(users.access.substring(0, 4) > 5) ? (users.access | date :"dd/MM/yyyy hh:mm") : ''}}</td>
+                    <td>{{(users.isActive == true) ? 'Si':'No'}}</td>
+                    <td>
+                        <button title="Edit" ng-click="vm.addOpendialogUsers(users)" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Editar {{placement.selected}}"
+                                class="btn md-icon-button btn-mini bordercostumize" data-placement='bottom'>
+                            <i class="ion-edit"></i>
+                        </button>
+                        <button title="Delete" ng-click="vm.deleteUser(users)" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Eliminar {{placement.selected}}"
+                                class="btn md-icon-button btn-mini bordercostumize" data-placement='bottom'>
+                            <i class="ion-trash-b"></i>
+                        </button>
+                    </td>  
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <div st-pagination="" st-items-by-page="vm.paginations" st-displayed-pages="5"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="form-group select-page-size-wrap ">
+            <label>
+               Filas Por Pagina
+                <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                        ng-model="vm.paginations" ng-options="i for i in [5,10,15,20,25]"></select>
+            </label>
+        </div>
+    </div>
+</div>

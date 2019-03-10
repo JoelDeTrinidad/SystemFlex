@@ -1,0 +1,56 @@
+@import 'common';
+@import '../app/pages/security/roles-users/roles-users.scss';
+@import '../app/pages/security/users/users.scss';
+@import '../app/pages/security/users/add-user-dialog/add-user-dialog.scss';
+@import '../app/pages/resorts/lodgment/lodgment.scss';
+@import '../app/pages/security/login/login.scss';
+@import '../app/pages/security/marketing/marketing.scss';
+@import '../app/pages/resorts/payment-check/payment-check.scss';
+
+
+// injector
+// endinjector
+
+.radiusbtn {
+    border-radius: 35px;
+    margin-left: 18px;
+}
+
+/*#searchbar {
+    float: right;
+    padding-bottom: 25px;
+    margin-top: -46px;
+    position: relative;
+}*/
+
+.srchbar {
+    float: right;
+}
+
+.searchbarWithoutPopup {
+    float: right;
+    padding-bottom: 25px;
+    /*margin-top: -16px;*/
+    position: relative;
+}
+
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }
+  .loader-page{
+    background-color: rgba(99, 99, 99, 0.64);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding-top: 23%;    
+}

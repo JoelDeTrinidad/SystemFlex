@@ -1,0 +1,47 @@
+﻿<div ba-panel id="roles-users" ba-panel-class="user-page">
+    <div class="horizontal-scroll">
+        <div class="form-group select-page-size-wrap add-button">
+            <button title="Reset Pricing" ng-click="vm.addRolesUsersDialog(rolesUsers)" type="button" tooltip-placement="{{placement.selected}}" uib-tooltip="Agregar {{placement.selected}}"
+                    class="btn md-icon-button btn-mini resetPrice btn-primary" data-placement='bottom'>
+                <i class="ion-plus-circled"></i>
+            </button>
+        </div>
+        <div class="srchbar">
+            <input type="text" class="form-control form-control-rounded" id="input03" placeholder="Buscar">
+        </div>
+        <table class="table" st-table="smartTableData">
+            <thead>
+                <tr class="sortable ">
+                    <th st-sort="user">Usuario</th>
+                    <th st-sort="role">Perfil</th>
+                </tr>
+
+                <!--<tr>
+                    <th></th>
+                    <th>
+                       <input st-search="name" placeholder="Buscar" class="input-sm search-input"
+                                   type="search" />
+                    </th>
+                </tr>-->
+            </thead>
+            <tbody>
+                <tr ng-repeat="rolesUsers in vm.rolesUsersList">
+                    <td>{{rolesUsers.user.user}}</td>
+                    <td>{{rolesUsers.role.name}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <label>
+            filas por página
+            <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                    ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]"></select>
+        </label>
+    </div>
+</div>

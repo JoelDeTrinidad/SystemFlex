@@ -1,0 +1,36 @@
+﻿#lodgment {
+    #customizablebtn {
+        -webkit-transform: none;
+        transform: none;
+    }
+
+    .col-md-3 {
+        float: none;
+        display: inline-flex;
+    }
+
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        color: #666666;
+    }
+
+    .dtFromSpan {
+        color: red;
+        margin-top: 35px;
+        position: absolute;
+        margin-left: -12px;
+    }
+
+    .dtToSpan {
+        color: red;
+        margin-top: 35px;
+        position: absolute;
+        margin-left: -12px;
+    }
+
+    .warningPersonslst {
+        color: red;
+        position: absolute;
+        margin-top: 5%;
+        margin-left: -11%;
+    }
+}
